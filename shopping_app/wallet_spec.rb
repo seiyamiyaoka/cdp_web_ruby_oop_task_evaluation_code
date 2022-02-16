@@ -35,7 +35,7 @@ RSpec.describe Wallet do
       original_balance = wallet.balance
       wallet.deposit(amount)
       expect(wallet.balance).to eq (original_balance + amount)
-    end (original_balance + amount)
+    end
   end
 
   describe "#withdraw(amount)" do
