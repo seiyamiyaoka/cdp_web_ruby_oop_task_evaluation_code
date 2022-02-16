@@ -54,7 +54,7 @@ RSpec.describe Item do
   describe "#label" do
     it "Must return a hash of { name: its own name, price: its own price }" do
       expect(item.label).to eq({ name: item.name, price: item.price })
-    end end
+    end
   end
 
   describe ".all" do
