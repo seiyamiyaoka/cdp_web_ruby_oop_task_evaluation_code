@@ -3,15 +3,15 @@ require "spec_helper"
 RSpec.describe Wallet do
   let(:wallet){ build(:wallet, owner: build(:seller)) }
 
-  it "Ownableをincludeしていること" do
+  it "must include Ownable" do
     expect(Wallet.included_modules.include?(Ownable)).to eq true
   end
 
   describe "#initialize" do
-    it "@ownerを持つこと" do
+    it "To have @owner" do
       expect(wallet.instance_variable_get(:@owner)).to be_truthy
     end
-    it "初期値が0の@balanceを持つこと" do
+    it "Must have @balance with initial value of 0" do
       expect(wallet.instance_variable_get(:@balance)).to eq 0
     end
   end
@@ -21,36 +21,36 @@ RSpec.describe Wallet do
     before do
       wallet.deposit(balance)
     end
-    it "balance属性に定義されている数値を返すこと" do
+    it "To return the number defined in the balance attribute" do
       expect(wallet.balance).to eq balance
     end
-    it "'#balance='は定義されていないこと（attr_readerを使っていること）" do
+    it "'#balance=' must not be defined (using attr_reader)" do
       expect(wallet.methods.include?(:balance=)).to eq false
     end
   end
 
   describe "#deposit(amount)" do
     let(:amount) { 99999999999 }
-    it "amountとして渡された数値が自身のbalanceに加算されること" do
+    it 'that the number passed as "amount" will be added to its own balance' do
       original_balance = wallet.balance
       wallet.deposit(amount)
       expect(wallet.balance).to eq (original_balance + amount)
-    end
+    end (original_balance + amount)
   end
-  
+
   describe "#withdraw(amount)" do
     let(:amount) { 10 }
     before do
       wallet.deposit(100)
     end
-    it "amountとして渡された数値を自身のbalanceから減算してその数値を返すこと" do
+    it 'subtract the number passed as "amount" from its own balance and return that number' do
       original_balance = wallet.balance
       expect(wallet.withdraw(amount)).to eq amount
       expect(wallet.balance).to eq (original_balance - amount)
     end
-    context "十分な残高がない場合" do
+    context "If there is not enough balance" do
       let(:amount) { 99999999999 }
-      it "nilを返すこと" do
+      it "to return nil" do
         expect(wallet.withdraw(amount)).to eq nil
       end
     end
