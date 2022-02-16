@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe ItemManager do
-  let(:dummy_class) { Class.new { extend ItemManager }
+  let(:dummy_class) { Class.new { extend ItemManager } }
 
   describe "#items" do
     it "should return all items for which it is the owner" do
