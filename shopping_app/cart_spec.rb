@@ -65,7 +65,7 @@ RSpec.describe Cart do
       expect(items.all?{|item| item.owner == customer }).to eq true
     end
     it "The contents of the cart (Cart#items) must be empty" do
-      expect(cart.items ! = []).to eq true
+      expect(cart.items != []).to eq true
       cart.check_out
       expect(cart.items == []).to eq true
     end
