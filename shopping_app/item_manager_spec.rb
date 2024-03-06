@@ -17,7 +17,7 @@ RSpec.describe ItemManager do
       build_list(:item, 5, number: 1, name: "item2", price: "200", owner: dummy_class)
     end
     it "商品番号(number)と個数(quantity)に応じたアイテムを返すこと" do
-      items = dummy_class.pick_items(0, 3)
+      items = dummy_class.pick_items(1, 3)
       expect(items.size).to eq 3
       expect(items.all?{|item| item.label == items.first.label}).to eq true
     end
@@ -41,7 +41,7 @@ RSpec.describe ItemManager do
     it "ラベルごとに分類された自身の所有するアイテムとその個数のリストを表示すること" do
       expected_outpt = <<~EOS
         +----+------+----+----+
-        |番号|商品名|金額|数量|
+        |商品番号|商品名|金額|数量|
         +----+------+----+----+
         |1   |item1 |100 |5   |
         |1   |item2 |200 |5   |
