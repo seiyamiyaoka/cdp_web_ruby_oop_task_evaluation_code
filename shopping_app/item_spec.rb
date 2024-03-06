@@ -53,7 +53,7 @@ RSpec.describe Item do
 
   describe "#label" do
     it "{ name: 自身のname, price: 自身のprice }のハッシュを返すこと" do
-      expect(item.label).to eq({ name: item.name, price: item.price })
+      expect(item.label).to eq({ name: item.name, number: item.number, price: item.price })
     end
   end
 

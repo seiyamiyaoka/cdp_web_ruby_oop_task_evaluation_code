@@ -13,8 +13,8 @@ RSpec.describe ItemManager do
 
   describe "#pick_items(number, quantity)" do
     before do
-      build_list(:item, 5, name: "item1", price: "100", owner: dummy_class)
-      build_list(:item, 5, name: "item2", price: "200", owner: dummy_class)
+      build_list(:item, 5, number: 1, name: "item1", price: "100", owner: dummy_class)
+      build_list(:item, 5, number: 1, name: "item2", price: "200", owner: dummy_class)
     end
     it "商品番号(number)と個数(quantity)に応じたアイテムを返すこと" do
       items = dummy_class.pick_items(0, 3)
@@ -43,7 +43,7 @@ RSpec.describe ItemManager do
         +----+------+----+----+
         |番号|商品名|金額|数量|
         +----+------+----+----+
-        |0   |item1 |100 |5   |
+        |1   |item1 |100 |5   |
         |1   |item2 |200 |5   |
         +----+------+----+----+
       EOS
