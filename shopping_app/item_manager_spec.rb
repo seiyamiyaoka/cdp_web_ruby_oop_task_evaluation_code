@@ -35,8 +35,8 @@ RSpec.describe ItemManager do
 
   describe "#items_list" do
     before do
-      build_list(:item, 5, name: "item1", price: "100", owner: dummy_class)
-      build_list(:item, 5, name: "item2", price: "200", owner: dummy_class)
+      build_list(:item, 5, number: 1, name: "item1", price: "100", owner: dummy_class)
+      build_list(:item, 5, number: 1, name: "item2", price: "200", owner: dummy_class)
     end
     it "ラベルごとに分類された自身の所有するアイテムとその個数のリストを表示すること" do
       expected_outpt = <<~EOS
