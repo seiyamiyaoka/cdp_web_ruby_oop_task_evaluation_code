@@ -5,6 +5,6 @@ FactoryBot.define do
     price { 1000 }
     owner { build(:seller) }
 
-    initialize_with { new(name, price, owner) }
+    initialize_with { new(number, name, price, owner) }
   end
 end
